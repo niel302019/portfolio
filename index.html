@@ -33,29 +33,70 @@
         <h2>My Works</h2>
         <div class="gallery">
             <div class="item">
-                <video src="portfolio file.mov"></video>
-                <h3>Short Film: The Promise</h3>
-                <p>2D frame-by-frame animation about memory and art.</p>
+                <video src="img/portfolio file.mov" onclick="openVideoLightbox('videos/demo.mp4')" controls></video>
+                <video src="img/2.3 revise.mov" onclick="openVideoLightbox('videos/demo.mp4')" controls></video>
+                <video src="img/4.1mp4.mov" onclick="openVideoLightbox('videos/demo.mp4')" controls></video>
+                <h3>Short Film: The Father's Promise</h3>
+                <p>Short clip of our Capstone Project.</p>
             </div>
 
             <div class="item">
-                <img src="art room.jpg" alt="Project 2">
-                <img src="2.5.jpg" alt="Project 2">
+                <img src="img/art room.jpg" alt="Project 2" onclick="openLightbox(this)">
+                <img src="img/2.5.jpg" alt="Project 2" onclick="openLightbox(this)">
                 <h3>Background Design</h3>
                 <p>Some of the backgrounds for our Animation Project.</p>
             </div>
 
             <div class="item">
-                <img src="project.png" alt="Project 3">
+                <img src="img/project.png" alt="Project 3">
                 <h3>2D Character Design </h3>
                 <p>Designing Character using Krita — focus on character exoression,dynamic pose, and turn around shots.</p>
             </div>
         </div>
     </section>
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+</div>
+
+<!-- Video Lightbox -->
+<div id="videoLightbox" class="lightbox" onclick="closeVideoLightbox()">
+    <span class="close">&times;</span>
+    <video class="lightbox-content" id="lightbox-video" controls></video>
+</div>
+
+<script>
+function openLightbox(image) {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    lightbox.style.display = "flex";
+    lightboxImg.src = image.src;
+}
+
+function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+}
+
+function openVideoLightbox(videoSrc) {
+    const lightbox = document.getElementById("videoLightbox");
+    const video = document.getElementById("lightbox-video");
+    lightbox.style.display = "flex";
+    video.src = videoSrc;
+    video.play();
+}
+
+function closeVideoLightbox() {
+    const lightbox = document.getElementById("videoLightbox");
+    const video = document.getElementById("lightbox-video");
+    lightbox.style.display = "none";
+    video.pause();
+    video.src = "";
+}
+</script>
 
     <!-- About Section -->
     <section id="about" class="about">
-        <img src="IMG_6881.jpg" alt="Profile">
+        <img src="img/IMG_6881.jpg" alt="Profile">
         <div class="about-text">
             <h2>About Me</h2>
             <p>I’m Niel Laurente, an animation student passionate about storytelling and digital art. 
@@ -64,6 +105,12 @@
             <a href="resume.pdf" class="btn">Download Resume</a>
         </div>
     </section>
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+</div>
+
+
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
